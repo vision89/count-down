@@ -55,9 +55,14 @@ Example:
 
     is: 'count-down',
 
-    hostAttributes: {
+    properties: {
 
-      endTime: ''
+      endTime: {
+
+        type: Object,
+        value: undefined
+
+      }
 
     },
 
@@ -81,13 +86,11 @@ Example:
       // visual state or active behavior (measuring sizes, beginning animations,
       // loading resources, etc).
 
-      var end = new Date( this.endTime );
-
       countdown.setLabels(' | |:|:||||||', ' | |:|:||||||', '', '', '', '' );
 
-      var timer = undefined;
+      this.timer = undefined;
 
-      setTimeout( timer = countdown( end, function ( ts ) {
+      setTimeout( timer = countdown( this.endTime, function ( ts ) {
 
         document.getElementById( 'timer' ).innerHTML = ts.toHTML( 'strong' );
 
@@ -100,6 +103,9 @@ Example:
       // removed from a document.
       //
       // Use this to clean up anything you did in `attached`.
+
+      window.clearInterval( this.timer );
+
     }
 
   });

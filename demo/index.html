@@ -31,10 +31,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ( function ( document ) {
 
         var app = document.querySelector('#app');
-        var endTime = new Date();
-        endTime.setUTCHours(24, 0, 0, 0);
-
-        app.endTime = endTime.toUTCString();
+        app.endTime = new Date();
+        app.endTime.setUTCHours(24, 0, 0, 0);
 
       })( document );
 
