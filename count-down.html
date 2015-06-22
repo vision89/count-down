@@ -7,8 +7,8 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<link rel="import" href="../polymer/polymer.html">
-<script src="../countdownjs/countdown.min.js"></script>
+<link rel="import" href="bower_components/polymer/polymer.html">
+<script src="bower_components/countdownjs/countdown.min.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <!--
 An element providing a solution to no problem in particular.
@@ -34,9 +34,31 @@ Example:
     .timer {
 
       font-family: 'Roboto', sans-serif;
-      font-size: 2em;
+      font-size: 1.5em;
       color: rgb(233, 74, 47);
       @apply(--timer-theme);
+
+    }
+
+    .table {
+
+      display: table;
+      border-collapse: separate;
+      border-spacing: 0.90em 0;
+
+    }
+
+    .row {
+
+        display: table-row;
+
+    }
+
+    .col {
+
+        display: table-cell;
+        background-color: #fff;
+        text-align: center;
 
     }
 
@@ -44,14 +66,61 @@ Example:
 
   <template>
 
-    <span id="timer" class="timer"></span>
+    <div class="table timer">
+
+        <div class="row">
+
+          <div class="col">
+
+            <strong><span>[[hours]]</span></strong>
+          
+          </div>
+
+          <div class="col">
+
+            <strong><span>[[minutes]]</span></strong>
+
+          </div>
+          
+          <div class="col">
+            
+            <strong><span>[[seconds]]</span></strong>
+          
+          </div>
+        
+        </div>
+        
+        <div class="row">
+          
+          <div class="col">
+            
+            <strong>Hours</strong>
+          
+          </div>
+          
+          <div class="col">
+            
+            <strong>Minutes</strong>
+          
+          </div>
+          
+          <div class="col">
+            
+            <strong>Seconds</strong>
+          
+          </div>
+        
+        </div>
+      
+      </div>
 
   </template>
 
 </dom-module>
 
 <script>
-'use strict';
+  
+  'use strict';
   Polymer({
 
     is: 'count-down',
@@ -78,6 +147,9 @@ Example:
       // necessary), or kick off any processes the element wants to perform.
       
       this.timer = undefined;
+      this.hours = '00';
+      this.minutes = '00';
+      this.seconds = '00';
 
     },
 
@@ -94,6 +166,7 @@ Example:
        * @param  {[type]} t [description]
        * @return {[type]}   [description]
        */
+
       function _timeFormatter( t ) {
 
         if ( t === undefined ) {
@@ -112,11 +185,33 @@ Example:
 
       };
 
-      setTimeout( this.timer = countdown( this.endTime, function ( ts ) {
+      var that = this;
 
-        document.getElementById( 'timer' ).innerHTML = '<strong>' + _timeFormatter( ts.hours ) + ':' + _timeFormatter ( ts.minutes ) + ':' + _timeFormatter( ts.seconds ) + '</strong>';
+      this.timer = countdown( this.endTime, function ( ts ) {
 
-      }));
+        var hours = _timeFormatter( ts.hours );
+        var minutes = _timeFormatter ( ts.minutes );
+        var seconds = _timeFormatter( ts.seconds );
+
+        if ( hours !== that.hours ) {
+
+          that.hours = hours;
+
+        }
+
+        if ( minutes !== that.minutes ) {
+
+          that.minutes = minutes;
+
+        }
+
+        if ( seconds !== that.seconds ) {
+
+          that.seconds = seconds;
+
+        }
+
+      });
 
     },
 
