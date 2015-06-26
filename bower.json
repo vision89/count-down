@@ -1,6 +1,6 @@
 {
   "name": "count-down",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "authors": [
     "Anonymous <anonymous@example.com>"
   ],
@@ -23,6 +23,7 @@
     "web-component-tester": "*"
   },
   "dependencies": {
-    "countdownjs": "~2.5.2"
+    "countdownjs": "~2.5.2",
+    "polymer": "~1.0.5"
   }
 }
