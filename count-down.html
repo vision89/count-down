@@ -130,9 +130,64 @@ Example:
       endTime: {
 
         type: Object,
-        value: undefined
+        value: undefined,
+        observer: '_updateTime'
 
       }
+
+    },
+    _updateTime: function ( data ) {
+
+      /**
+       * Helps make sure each time element is formatted properly
+       * @param  {[type]} t [description]
+       * @return {[type]}   [description]
+       */
+      function _timeFormatter( t ) {
+
+        if ( t === undefined ) {
+
+          return '00';
+
+        } else if ( t < 10 ) {
+
+          return '0' + t;
+
+        } else {
+
+          return t;
+
+        };
+
+      };
+
+      var that = this;
+
+      this.timer = countdown( data, function ( ts ) {
+
+        var hours = _timeFormatter( ts.hours );
+        var minutes = _timeFormatter ( ts.minutes );
+        var seconds = _timeFormatter( ts.seconds );
+
+        if ( hours !== that.hours ) {
+
+          that.hours = hours;
+
+        }
+
+        if ( minutes !== that.minutes ) {
+
+          that.minutes = minutes;
+
+        }
+
+        if ( seconds !== that.seconds ) {
+
+          that.seconds = seconds;
+
+        }
+
+      });
 
     },
 
@@ -160,58 +215,6 @@ Example:
       // This is a good place to perform any work related to your element's
       // visual state or active behavior (measuring sizes, beginning animations,
       // loading resources, etc).
-
-      /**
-       * Helps make sure each time element is formatted properly
-       * @param  {[type]} t [description]
-       * @return {[type]}   [description]
-       */
-
-      function _timeFormatter( t ) {
-
-        if ( t === undefined ) {
-
-          return '00';
-
-        } else if ( t < 10 ) {
-
-          return '0' + t;
-
-        } else {
-
-          return t;
-
-        };
-
-      };
-
-      var that = this;
-
-      this.timer = countdown( this.endTime, function ( ts ) {
-
-        var hours = _timeFormatter( ts.hours );
-        var minutes = _timeFormatter ( ts.minutes );
-        var seconds = _timeFormatter( ts.seconds );
-
-        if ( hours !== that.hours ) {
-
-          that.hours = hours;
-
-        }
-
-        if ( minutes !== that.minutes ) {
-
-          that.minutes = minutes;
-
-        }
-
-        if ( seconds !== that.seconds ) {
-
-          that.seconds = seconds;
-
-        }
-
-      });
 
     },
 
