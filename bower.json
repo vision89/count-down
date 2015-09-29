@@ -1,6 +1,6 @@
 {
   "name": "count-down",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     "Anonymous <anonymous@example.com>"
   ],
@@ -8,7 +8,8 @@
   "keywords": [
     "web-component",
     "polymer",
-    "seed"
+    "seed",
+    "web-components"
   ],
   "main": "count-down.html",
   "license": "http://polymer.github.io/LICENSE.txt",
