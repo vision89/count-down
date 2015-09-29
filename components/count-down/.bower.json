@@ -1,0 +1,38 @@
+{
+  "name": "count-down",
+  "authors": [
+    "Anonymous <anonymous@example.com>"
+  ],
+  "description": "An element providing a solution to no problem in particular.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "seed"
+  ],
+  "main": "count-down.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/<USERNAME>/count-down/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/"
+  ],
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  },
+  "dependencies": {
+    "countdownjs": "~2.5.2",
+    "polymer": "~1.0.5"
+  },
+  "_release": "23f8da798d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "23f8da798d864d60f341a18cdd0400eb5ee259bf"
+  },
+  "_source": "git://github.com/vision89/count-down.git",
+  "_target": "master",
+  "_originalSource": "vision89/count-down",
+  "_direct": true
+}
