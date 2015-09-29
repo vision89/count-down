@@ -11,10 +11,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script src="../countdownjs/countdown.min.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <!--
-An element providing a solution to no problem in particular.
+Display a little count down timer
 Example:
 
-    <seed-element></seed-element>
+    <count-down end-time="[[endTime]]"></count-down>
 
 @group Seed Elements
 @element seed-element
@@ -126,7 +126,10 @@ Example:
     is: 'count-down',
 
     properties: {
-
+      
+      /**
+       * Date object stating when the countdown should end
+       */ 
       endTime: {
 
         type: Object,
@@ -136,6 +139,9 @@ Example:
       }
 
     },
+    /**
+     * Starts the countdown
+     */ 
     _updateTime: function ( data ) {
 
       /**
